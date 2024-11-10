@@ -8,5 +8,5 @@ To run Open the project in Visual Studio Code and run `ng serve` in command wind
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Note: Running .Net Web API in Visual Studio 2022 required to run app functionally.
-How to run Web API steps are mentioned in Web API Reposotory ReadMe.
+How to run Web API steps are mentioned in Web API Repository ReadMe.
 
