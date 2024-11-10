@@ -1,0 +1,44 @@
+<p *ngIf="!paginatedPosts"><em>Loading...</em></p>
+<div class="row">
+  <div class="col d-inline">
+    <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">New post</a>
+  </div>
+  <div class="col d-inline">
+    <form>
+      <div class="form-group">
+        <input class="form-control" placeholder="Search here for post text.." (keyup)="search($event)">
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<ng-container *ngIf="paginatedPosts">
+  <div *ngIf="posts.length > 0">
+    <div class="card text-center" *ngFor="let post of paginatedPosts">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ post.text }}</p>
+
+      </div>
+      <div class="card-footer text-muted">
+        <div class="row">
+          <div class="col">Created By: {{ post.userName }}</div>
+          <div class="col">Created Date: {{ post.dateCreated | date: "dd.MM.y" }}</div>
+          <div class="col">
+            <a [routerLink]="['/post/edit/', post.id]" class="btn btn-primary btn-sm float-right me-1">Edit</a>
+            <a [routerLink]="" (click)="remove(post.id)" class="btn btn-danger btn-sm float-right me-1">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col mx-auto">
+      <app-pagination *ngIf="totalItems" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage"
+        (pageChange)="onPageChange($event)"></app-pagination>
+    </div>
+  </div>
+</ng-container>
